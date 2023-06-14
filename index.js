@@ -6,13 +6,13 @@ const users = require("./users.json");
 const wishlist = require("./wishlist.json");
 
 const app = jserver.create();
-const ownRouter = jserver.router({
-  places,
-  users,
-  wishlist,
-});
+// const ownRouter = jserver.router({
+//   places,
+//   users,
+//   wishlist,
+// });
 
-const ownRouter1 = jserver.router("db.json");
+const ownRouter = jserver.router("db.json");
 
 const middlewares = jserver.defaults();
 
@@ -24,7 +24,7 @@ app.db = ownRouter.db;
 // You must apply the auth middleware before the router
 app.use(middlewares);
 app.use(jauth);
-app.use(ownRouter1);
+app.use(ownRouter);
 app.listen(port, () => {
   console.log("App started on", port);
 });
