@@ -12,6 +12,8 @@ const ownRouter = jserver.router({
   wishlist,
 });
 
+const ownRouter1 = jserver.router("db.json");
+
 const middlewares = jserver.defaults();
 
 const port = process.env.PORT || 3000;
@@ -22,7 +24,7 @@ app.db = ownRouter.db;
 // You must apply the auth middleware before the router
 app.use(middlewares);
 app.use(jauth);
-app.use(ownRouter);
+app.use(ownRouter1);
 app.listen(port, () => {
   console.log("App started on", port);
 });
